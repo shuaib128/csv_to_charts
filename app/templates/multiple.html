@@ -53,12 +53,14 @@
             data: {
                 labels: [{% for label in labels %}'{{label}}',{% endfor %}],
                 datasets: [
-                    {
-                        label: '{{title}}',
-                        data: [{% for data in datas %}'{{data}}',{% endfor %}],
-                        backgroundColor: ['{{backgroundcolor}}'],
-                        borderWidth: 1
-                    },
+                    {% for label in labels %},
+                        {
+                            label: '{{title}}',
+                            data: [{% for data in datas %}'{{data}}',{% endfor %}],
+                            backgroundColor: ['{{backgroundcolor}}'],
+                            borderWidth: 1
+                        }
+                    {% endfor %}
                 ]
             },
             options: {
